@@ -3,6 +3,7 @@
 	height: 390px;
 	width: 480px;
 	margin: auto;
+	overflow: hidden;
 }
 
 .thing-buffer{
@@ -11,10 +12,7 @@
 	left: 0;
 	width: 100%;
 	transition: ease 0.4s all;
-}
-
-.thing-buffer .active{
-	transform: translateX(0%);
+	opacity: 0;
 }
 
 .control-half{
@@ -22,6 +20,7 @@
 	top: 0;
 	height: 100%;
 	width: 50%;
+	z-index: 3;
 }
 .prev-half{
 	left: 0;

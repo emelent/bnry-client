@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import ImageThing from '../ImageThing'
 import './Slider.css'
 
-const delta = 100
+const left = 'LEFT'
+const center = 'CENTER'
+const right = 'RIGHT'
+
+const xtranslates= {
+	[left]: -100,
+	[center]: 0,
+	[right]: 100
+}
+
 
 class Slider extends Component {
 	constructor(props) {
@@ -19,29 +28,45 @@ class Slider extends Component {
 			prevIndex,
 			currIndex,
 			nextIndex,
-			bufferPos: [-delta, 0, delta]
+			bufferPos: [left, center, right]
 		}
 	}
 
 	shiftBufferPos(direction){
 		if (direction === 0) return
-		let n = delta * direction
 		let bufferPos = Array.from(this.state.bufferPos)
 		for(let i=0; i < bufferPos.length; i++){
-			let val = bufferPos[i] 
-			if (val === 0 || val + n === 0)
-				bufferPos[i] = val + n
-				continue
-			
-			// moving left
-			if (direction === -1){
-				bufferPos[i] = delta
-			} 
-			// moving right
-			else if (direction === 1){
-				bufferPos[i] = -delta
+			if (direction === 1){ // going right
+				switch(bufferPos[i]){
+					case left:
+						bufferPos[i] = center
+						break
+					case right:
+						bufferPos[i] = left
+						break
+					case center:
+						bufferPos[i] = right
+						break
+					default: break
+				}
+			}else if (direction === -1){// going left
+				switch(bufferPos[i]){
+					
+					case left:
+						bufferPos[i] = right
+						break
+					case right:
+						bufferPos[i] = center
+						break
+					case center:
+						bufferPos[i] = left
+						break
+					default: break
+				}
 			}
 		}
+		console.log(bufferPos)
+		this.setState({bufferPos})
 	}
 
 	shiftIndex(direction){
@@ -71,17 +96,21 @@ class Slider extends Component {
 
 	handlePrev(){
 		if (this.props.data.length < 1) return
-		this.shiftIndex(-1)
+		// this.shiftIndex(-1)
+		this.shiftBufferPos(-1)
 	}
 
 	handleNext(){
 		if (this.props.data.length < 1) return
-		this.shiftIndex(1)
+		// this.shiftIndex(1)
+		this.shiftBufferPos(1)
 	}
 
-	getTranslateX(x){
+	getBufferStyle(pos){
 		return {
-			transform: 'translateX(' + x + '%)'
+			transform: 'translateX(' + xtranslates[pos] + '%)',
+			zIndex: (pos === center)? 1:0,
+			opacity: (pos === center)? 1:0,
 		}
 	}
 
@@ -89,15 +118,15 @@ class Slider extends Component {
 		const data = this.props.data
 		const {currIndex, prevIndex, nextIndex, bufferPos} = this.state
 		const prev = {
-			style : this.getTranslateX(bufferPos[0]),
+			style : this.getBufferStyle(bufferPos[0]),
 			data: data[prevIndex]
 		}
 		const curr = {
-			style : this.getTranslateX(bufferPos[1]),
+			style : this.getBufferStyle(bufferPos[1]),
 			data: data[currIndex]
 		}
 		const next = {
-			style : this.getTranslateX(bufferPos[2]),
+			style : this.getBufferStyle(bufferPos[2]),
 			data: data[nextIndex]
 		}
 		
