@@ -5,9 +5,9 @@
 	and sliding things around.
 
 	This is a multi-step part:
-		1. Component renders images
-		2. Component can go to next and previous image
-		3. Component infinitely scrolls
+		1. Component renders images (done)
+		2. Component can go to next and previous image (done)
+		3. Component infinitely scrolls (done)
 		4. Add some animations
 
 ### Goal 2

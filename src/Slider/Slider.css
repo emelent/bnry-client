@@ -1,0 +1,46 @@
+.slider{
+	position: relative;
+	height: 390px;
+	width: 480px;
+	margin: auto;
+}
+
+.thing-buffer{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	transition: ease 0.4s all;
+}
+
+.thing-buffer .active{
+	transform: translateX(0%);
+}
+
+.control-half{
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 50%;
+}
+.prev-half{
+	left: 0;
+	background: rgba(255, 0, 0, 0.3);
+}
+.next-half{
+	right: 0;
+	background: rgba(0, 0, 255, 0.3);
+}
+
+.control{
+	position: absolute;
+	top: 50%;
+}
+
+.control-prev{
+	left: 0;
+}
+
+.contrl-next{
+	right: 0;
+}
