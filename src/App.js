@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Slider from './Slider'
+import ImageThing from './ImageThing'
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to BNRY?</h1>
 		</header>
-		<Slider data={images} />
+		<Slider data={images} thing={(props) => <ImageThing {...props}/>} />
       </div>
     );
   }

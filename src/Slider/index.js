@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ImageThing from '../ImageThing'
 import './Slider.css'
+
 
 const left = 'left'
 const center = 'center'
 const right = 'right'
-
-const xtranslates= {
-	[left]: -100,
-	[center]: 0,
-	[right]: 100
-}
-
 
 class Slider extends Component {
 	constructor(props) {
@@ -26,7 +19,7 @@ class Slider extends Component {
 		const nextIndex = Math.abs(1 % len)
 		this.state = {
 			buffer: [
-				{pos: left, index:prevIndex}, 
+				{pos:left, index:prevIndex}, 
 				{pos:center, index:currIndex}, 
 				{pos:right, index:nextIndex}
 			]
@@ -92,9 +85,11 @@ class Slider extends Component {
 
 
 
-	render(props) {
-		const data = this.props.data
+	render() {
+		const {data} = this.props
+		const Thing = this.props.thing
 		const {buffer} = this.state
+
 		const prev = {
 			className : this.getBufferClassName(buffer[0].pos),
 			data: data[buffer[0].index]
@@ -112,13 +107,13 @@ class Slider extends Component {
 			<div className="slider" >
 				<div className={'thing-buffer ' + prev.className}
 				>
-					<ImageThing data={prev.data} />
+					<Thing data={prev.data} />
 				</div>
 				<div className={'thing-buffer ' + curr.className}>
-					<ImageThing data={curr.data} />
+					<Thing data={curr.data} />
 				</div>
 				<div className={'thing-buffer ' + next.className}>
-					<ImageThing data={next.data} />
+					<Thing data={next.data} />
 				</div>
 				<div className="control-half prev-half" 
 					onClick={this.handlePrev}
@@ -144,7 +139,7 @@ class Slider extends Component {
 }
 
 Slider.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.object)
+	data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 	
 export default Slider;	
