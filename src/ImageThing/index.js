@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const ImageThing = ({data:{url, description}}) => (
+const ImageThing = ({url, description}) => (
 	<div>
 		<img src={url} alt="Something"/>
 		<div>{description}</div>
 	</div>
 )
-Image.propTypes = {
+ImageThing.propTypes = {
 	data: PropTypes.object
 };
 

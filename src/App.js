@@ -12,9 +12,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to BNRY?</h1>
 		</header>
-		<Slider data={images} thing={(props) => <ImageThing {...props}/>} />
+		<Slider data={images} thing={ImageThing} />
       </div>
-    );
+    )
   }
 }
 

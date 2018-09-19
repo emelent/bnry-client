@@ -107,13 +107,13 @@ class Slider extends Component {
 			<div className="slider" >
 				<div className={'thing-buffer ' + prev.className}
 				>
-					<Thing data={prev.data} />
+					<Thing {...prev.data} />
 				</div>
 				<div className={'thing-buffer ' + curr.className}>
-					<Thing data={curr.data} />
+					<Thing {...curr.data} />
 				</div>
 				<div className={'thing-buffer ' + next.className}>
-					<Thing data={next.data} />
+					<Thing {...next.data} />
 				</div>
 				<div className="control-half prev-half" 
 					onClick={this.handlePrev}
