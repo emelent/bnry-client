@@ -25,85 +25,58 @@ class Slider extends Component {
 		const currIndex = 0
 		const nextIndex = Math.abs(1 % len)
 		this.state = {
-			prevIndex,
-			currIndex,
-			nextIndex,
-			bufferPos: [left, center, right]
+			buffer: [
+				{pos: left, index:prevIndex}, 
+				{pos:center, index:currIndex}, 
+				{pos:right, index:nextIndex}
+			]
 		}
 	}
 
-	shiftBufferPos(direction){
+	shiftbuffer(direction){
 		if (direction === 0) return
-		let bufferPos = Array.from(this.state.bufferPos)
-		for(let i=0; i < bufferPos.length; i++){
+		let buffer = Array.from(this.state.buffer)
+		for(let i=0; i < buffer.length; i++){
 			if (direction === 1){ // going right
-				switch(bufferPos[i]){
+				switch(buffer[i].pos){
 					case left:
-						bufferPos[i] = center
+						buffer[i].pos = center
 						break
 					case right:
-						bufferPos[i] = left
+						buffer[i].pos = left
 						break
 					case center:
-						bufferPos[i] = right
+						buffer[i].pos = right
 						break
 					default: break
 				}
 			}else if (direction === -1){// going left
-				switch(bufferPos[i]){
+				switch(buffer[i].pos){
 					
 					case left:
-						bufferPos[i] = right
+						buffer[i].pos = right
 						break
 					case right:
-						bufferPos[i] = center
+						buffer[i].pos = center
 						break
 					case center:
-						bufferPos[i] = left
+						buffer[i].pos = left
 						break
 					default: break
 				}
 			}
 		}
-		console.log(bufferPos)
-		this.setState({bufferPos})
-	}
-
-	shiftIndex(direction){
-		// upgrade this to use absolute and modulus 
-		if (direction === 0) return
-		let {prevIndex, currIndex, nextIndex} = this.state
-		let len = this.props.data.length
-		
-		// moving left
-		if(direction === -1){
-			nextIndex = currIndex
-			currIndex = prevIndex
-			prevIndex --
-			if (prevIndex === -1)
-				prevIndex =  len - 1
-		} 
-		// moving right
-		else if (direction === 1){
-			prevIndex = currIndex
-			currIndex = nextIndex
-			nextIndex ++
-			if (nextIndex === len - 1)
-				nextIndex = 0
-		}
-		this.setState({prevIndex, currIndex, nextIndex})
+		this.setState({buffer})
 	}
 
 	handlePrev(){
 		if (this.props.data.length < 1) return
-		// this.shiftIndex(-1)
-		this.shiftBufferPos(-1)
+		this.shiftbuffer(-1)
 	}
 
 	handleNext(){
 		if (this.props.data.length < 1) return
-		// this.shiftIndex(1)
-		this.shiftBufferPos(1)
+		this.shiftbuffer(1)
 	}
 
 	getBufferStyle(pos){
@@ -114,20 +87,22 @@ class Slider extends Component {
 		}
 	}
 
+
+
 	render(props) {
 		const data = this.props.data
-		const {currIndex, prevIndex, nextIndex, bufferPos} = this.state
+		const {buffer} = this.state
 		const prev = {
-			style : this.getBufferStyle(bufferPos[0]),
-			data: data[prevIndex]
+			style : this.getBufferStyle(buffer[0].pos),
+			data: data[buffer[0].index]
 		}
 		const curr = {
-			style : this.getBufferStyle(bufferPos[1]),
-			data: data[currIndex]
+			style : this.getBufferStyle(buffer[1].pos),
+			data: data[buffer[1].index]
 		}
 		const next = {
-			style : this.getBufferStyle(bufferPos[2]),
-			data: data[nextIndex]
+			style : this.getBufferStyle(buffer[2].pos),
+			data: data[buffer[2].index]
 		}
 		
 		return (
