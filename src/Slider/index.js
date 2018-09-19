@@ -129,6 +129,18 @@ class Slider extends Component {
 				<div className="control-half next-half" 
 					onClick={this.handleNext}
 				></div>
+
+				<div className="control-container">
+					<div className="control"
+						onClick={this.handlePrev}
+						title="Previous"
+					>&lt;</div>
+					<div className="control"
+						onClick={this.handleNext}
+						title="Next"
+					>&gt;</div>
+				</div>
+				
 			</div>
 		);
 	}
@@ -140,9 +152,3 @@ Slider.propTypes = {
 	
 export default Slider;	
 
-// <div className="control control-prev"
-// onClick={this.handlePrev}
-// >&lt;</div>
-// <div className="control control-next"
-// onClick={this.handleNext}
-// >&gt;</div>

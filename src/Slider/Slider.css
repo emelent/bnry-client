@@ -1,6 +1,6 @@
 .slider{
 	position: relative;
-	height: 390px;
+	height: 420px;
 	width: 480px;
 	margin: auto;
 	overflow: hidden;
@@ -18,7 +18,7 @@
 .control-half{
 	position: absolute;
 	top: 0;
-	height: 100%;
+	height: calc(100% - 20px);
 	width: 50%;
 	z-index: 3;
 }
@@ -31,15 +31,16 @@
 	background: rgba(0, 0, 255, 0.3);
 }
 
-.control{
+.control-container{
 	position: absolute;
-	top: 50%;
+	bottom: 0;
+	width: 100%;
+	height: 20px;
+	display: flex;
+	z-index: 4;
 }
 
-.control-prev{
-	left: 0;
-}
-
-.contrl-next{
-	right: 0;
+.control{
+	flex: 1;
+	cursor: pointer;
 }
