@@ -33,37 +33,43 @@ class Slider extends Component {
 		}
 	}
 
+
 	shiftbuffer(direction){
 		if (direction === 0) return
 		let buffer = Array.from(this.state.buffer)
+		let len = this.props.data.length
 		for(let i=0; i < buffer.length; i++){
 			if (direction === 1){ // going right
 				switch(buffer[i].pos){
+					
 					case left:
-						buffer[i].pos = center
+						buffer[i].pos = right
+						buffer[i].index = (buffer[(i + 2) % 3].index + 1) % len
 						break
 					case right:
-						buffer[i].pos = left
+						buffer[i].pos = center
 						break
 					case center:
-						buffer[i].pos = right
+						buffer[i].pos = left
 						break
 					default: break
 				}
 			}else if (direction === -1){// going left
 				switch(buffer[i].pos){
-					
 					case left:
-						buffer[i].pos = right
-						break
-					case right:
 						buffer[i].pos = center
 						break
-					case center:
+					case right:
 						buffer[i].pos = left
+						buffer[i].index = (buffer[(i + 1) % 3].index - 1)
+						if (buffer[i].index ===  -1)
+							buffer[i].index = len -1
+						break
+					case center:
+						buffer[i].pos = right
 						break
 					default: break
-				}
+				}				
 			}
 		}
 		this.setState({buffer})

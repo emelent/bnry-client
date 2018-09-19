@@ -20,23 +20,23 @@ class App extends Component {
 const images = [
 	{
 		url: 'https://picsum.photos/480/360/?image=472',
-		description: 'I hope this is a boat'
+		description: '1'
 	},
 	{
 		url: 'https://picsum.photos/480/360/?image=439',
-		description: 'Are we looking at an animal?'
+		description: '2'
 	},
 	{
 		url: 'https://picsum.photos/480/360/?image=22',
-		description: 'Look at all these buttons'
+		description: '3'
 	},
 	{
 		url: 'https://picsum.photos/480/360/?image=24',
-		description: 'I could do with a lot more of these'
+		description: '4'
 	},
 	{
 		url: 'https://picsum.photos/480/360/?image=20',
-		description: 'Another great view'
+		description: '5'
 	},
 ]
 
