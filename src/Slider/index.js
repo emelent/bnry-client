@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import ImageThing from '../ImageThing'
 import './Slider.css'
 
-const left = 'LEFT'
-const center = 'CENTER'
-const right = 'RIGHT'
+const left = 'left'
+const center = 'center'
+const right = 'right'
 
 const xtranslates= {
 	[left]: -100,
@@ -34,6 +34,7 @@ class Slider extends Component {
 	}
 
 
+	// refactor me
 	slide(direction){
 		if (direction === 0) return
 		let buffer = Array.from(this.state.buffer)
@@ -85,12 +86,8 @@ class Slider extends Component {
 		this.slide(1)
 	}
 
-	getBufferStyle(pos){
-		return {
-			transform: 'translateX(' + xtranslates[pos] + '%)',
-			zIndex: (pos === center)? 1:0,
-			opacity: (pos === center)? 1:0,
-		}
+	getBufferClassName(pos){
+		return 'thing-buffer-' + pos
 	}
 
 
@@ -99,28 +96,28 @@ class Slider extends Component {
 		const data = this.props.data
 		const {buffer} = this.state
 		const prev = {
-			style : this.getBufferStyle(buffer[0].pos),
+			className : this.getBufferClassName(buffer[0].pos),
 			data: data[buffer[0].index]
 		}
 		const curr = {
-			style : this.getBufferStyle(buffer[1].pos),
+			className : this.getBufferClassName(buffer[1].pos),
 			data: data[buffer[1].index]
 		}
 		const next = {
-			style : this.getBufferStyle(buffer[2].pos),
+			className : this.getBufferClassName(buffer[2].pos),
 			data: data[buffer[2].index]
 		}
 		
 		return (
 			<div className="slider" >
-				<div className="thing-buffer" style={prev.style}
+				<div className={'thing-buffer ' + prev.className}
 				>
 					<ImageThing data={prev.data} />
 				</div>
-				<div className="thing-buffer" style={curr.style}>
+				<div className={'thing-buffer ' + curr.className}>
 					<ImageThing data={curr.data} />
 				</div>
-				<div className="thing-buffer" style={next.style}>
+				<div className={'thing-buffer ' + next.className}>
 					<ImageThing data={next.data} />
 				</div>
 				<div className="control-half prev-half" 
@@ -131,11 +128,11 @@ class Slider extends Component {
 				></div>
 
 				<div className="control-container">
-					<div className="control"
+					<div className="control control-prev"
 						onClick={this.handlePrev}
 						title="Previous"
 					>&lt;</div>
-					<div className="control"
+					<div className="control control-next"
 						onClick={this.handleNext}
 						title="Next"
 					>&gt;</div>

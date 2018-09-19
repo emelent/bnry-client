@@ -13,8 +13,20 @@
 	width: 100%;
 	transition: ease 0.4s all;
 	opacity: 0;
+	z-index: 0;
 }
 
+.thing-buffer-left{
+	transform: translateX(-100%);
+}
+.thing-buffer-center{
+	transform: translateX(0%);
+	z-index: 1;
+	opacity: 1;
+}
+.thing-buffer-right{
+	transform: translateX(100%);
+}
 .control-half{
 	position: absolute;
 	top: 0;
