@@ -38,6 +38,10 @@ const images = [
 		url: 'https://picsum.photos/480/360/?image=20',
 		description: '5'
 	},
+	{
+		url: 'https://picsum.photos/480/360/?image=80',
+		description: '6'
+	}
 ]
 
 export default App;

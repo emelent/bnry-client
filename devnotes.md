@@ -8,7 +8,7 @@
 		1. Component renders images (done)
 		2. Component can go to next and previous image (done)
 		3. Component infinitely scrolls (done)
-		4. Add some animations
+		4. Add some animations (done)
 
 ### Goal 2
 	Test the component, check that the state changes when buttons are clicked,

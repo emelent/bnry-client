@@ -34,7 +34,7 @@ class Slider extends Component {
 	}
 
 
-	shiftbuffer(direction){
+	slide(direction){
 		if (direction === 0) return
 		let buffer = Array.from(this.state.buffer)
 		let len = this.props.data.length
@@ -77,12 +77,12 @@ class Slider extends Component {
 
 	handlePrev(){
 		if (this.props.data.length < 1) return
-		this.shiftbuffer(-1)
+		this.slide(-1)
 	}
 
 	handleNext(){
 		if (this.props.data.length < 1) return
-		this.shiftbuffer(1)
+		this.slide(1)
 	}
 
 	getBufferStyle(pos){
