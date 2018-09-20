@@ -45,6 +45,7 @@
 
 ### Goal 5
 	Setup le Node Server
+	(done)
 
 
 ### Le Bonus, Hook the ting up
