@@ -88,7 +88,7 @@ class Slider extends Component {
 	}
 
 	render() {
-		const {data} = this.props
+		const {data, width, height} = this.props
 		const Thing = this.props.thing
 		const {buffer} = this.state
 
@@ -109,9 +109,12 @@ class Slider extends Component {
 		// setup hint text
 		const NextHint = (b3.data)? b3.data.description:"Next"
 		const PrevHint = (b1.data)? b1.data.description:"Prev"
-		
+		const style = {
+			width,
+			height
+		}
 		return (
-			<div className="slider" >
+			<div className="slider" style={style} >
 				{/* Buffers */}
 				<div className={'thing-buffer ' + b1.className}>
 					<Thing {...b1.data} />
@@ -150,7 +153,14 @@ class Slider extends Component {
 
 Slider.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.object).isRequired,
+	width: PropTypes.string,
+	height: PropTypes.string
 };
+
+Slider.defaultProps = {
+	width: '100%',
+	height: '520px'
+}
 	
 export default Slider;	
 

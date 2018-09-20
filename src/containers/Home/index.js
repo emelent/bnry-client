@@ -34,8 +34,13 @@ class Home extends Component {
 
 	render() {
 		return (
-			<div>
-				<Slider data={this.state.imageData} thing={ImageThing} />
+			<div className="home-view">
+				<div className="home-title">BNRY ReactJS Slider</div>
+				{ (this.state.error)?
+					<div className="home-warning">Failed to connect to Server... Using dummy daata</div>
+					:
+					<Slider data={this.state.imageData} thing={ImageThing} />
+				}
 			</div>
 		)
 	}

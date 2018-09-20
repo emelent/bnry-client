@@ -60,21 +60,23 @@ BONUS:
 
 		turns out i could just use the same height cap for all of them
 
-### Goal 5
+### Goal 5 (done)
 	Setup le Node Server
-	(done)
 
 
-### Le Bonus, Hook the ting up
+
+### Le Bonus, Hook the ting up (done)
 	Method 1:
 		Periodically poll the server for an update, yep, do the Redux tings
 
-	Method 2:
+	Method 2: 
 		Set up a websocket on the server so the client gets immediately notified of db changes
 		and reacts accordingly.
+	
+	Used method2
 
 
-### Clean up the code
+### Clean up the code (done)
 	Things are probably a mess at this point, time to re-evaluate code decisions and clean up
 	the dirties.
 

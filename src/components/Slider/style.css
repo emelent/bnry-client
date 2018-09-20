@@ -1,9 +1,12 @@
+:root {
+    --control-container-height: 60px; 
+}
 .slider{
 	position: relative;
-	height: 500px;
+	height: 520px;
 	width: 100%;
 	max-width: 100vw;
-	max-height: 100vh;
+	max-height: calc(100vh - 80px);
 	margin: auto;
 	overflow: hidden;
 	background: #000;
@@ -11,10 +14,10 @@
 
 .thing-buffer{
 	position: absolute;
-	top: 0;
+	top: 20px;
 	left: 0;
 	width: 100%;
-    height: calc(100% - 60px);
+    height: calc(100% - var(--control-container-height));
 	transition: ease 0.4s all;
 	opacity: 0;
 	z-index: 0;
@@ -34,7 +37,7 @@
 .control-half{
 	position: absolute;
 	top: 0;
-	height: calc(100% - 60px);
+	height: calc(100% - var(--control-container-height));
 	width: 50%;
 	z-index: 3;
 }
@@ -57,7 +60,7 @@
 	text-align: center;
 	width: 100%;
 	max-width: 500px;
-	height: 60px;
+	height: var(--control-container-height);
 	line-height: 50px;
 	display: flex;
 	z-index: 4;
