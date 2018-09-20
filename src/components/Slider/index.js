@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Slider.css'
+import './style.css'
 
 
 const left = 'left'
@@ -110,6 +110,9 @@ class Slider extends Component {
 			data: data[buffer[2].index]
 		}
 		
+		const NextHint = (next.data)? next.data.description:"Next"
+		const PrevHint = (prev.data)? prev.data.description:"Prev"
+		
 		return (
 			<div className="slider" >
 				<div className={'thing-buffer ' + prev.className}
@@ -132,11 +135,11 @@ class Slider extends Component {
 				<div className="control-container">
 					<div className="control control-prev"
 						onClick={this.handlePrev}
-						title="Previous"
+						title={PrevHint}
 					>&lt;</div>
 					<div className="control control-next"
 						onClick={this.handleNext}
-						title="Next"
+						title={NextHint}
 					>&gt;</div>
 				</div>
 				
