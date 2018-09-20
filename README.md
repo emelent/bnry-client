@@ -10,10 +10,9 @@ Feature List
 		should slide in and the old one slide out simultaneously. (done)
 	- Automated tests should be written to cover functionality that you feel should be covered.(done)
 	- Thought should be given to responsive design.(done)
-	- You will be judged on the cleanliness, maintainability and extensibility of the code.
 
 BONUS:
-	Changes to images or descriptions on the server propagate to the browser without the user needing to refresh the page.
+	Changes to images or descriptions on the server propagate to the browser without the user needing to refresh the page.(done)
 
 
 ## My thought process during this thing

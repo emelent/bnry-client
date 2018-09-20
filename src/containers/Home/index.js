@@ -7,23 +7,19 @@ import Slider from '../../components/Slider'
 import ImageThing from '../../components/ImageThing'
 
 const endpoint = 'http://localhost:5000'
-class Home extends Component {
-	constructor(props){
-		super(props)
 
-		this.state = {
-			imageData: [],
-			error: null
-		}
+class Home extends Component {
+	state = {
+		imageData: [],
+		error:  null
 	}
+
 	componentDidMount(){
 		const socket = socketIOClient(endpoint);
 		socket.on('UPDATE', imageData => {
-			console.log('update =>', imageData)
 			this.setState({imageData})
 		});
-		console.log('requesting from the server')
-		axios.get(endpoint + '/data')
+		axios.get(endpoint)
 			.then(({data}) => {
 				this.setState({imageData: data})
 			})
