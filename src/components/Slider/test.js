@@ -31,18 +31,22 @@ it('goes to the next and previous items when clicked', () =>{
 })
 
 
-it('it wraps around when it reaches the last item', () => {
+it('it wraps around when you click next passed the last image', () => {
 	const slider = shallow(<Slider data={data} thing={FakeThing}/>)
 	const nextHalf = slider.find('.next-half').at(0)
-	const prevHalf = slider.find('.prev-half').at(0)
 	
 	data.forEach(() => nextHalf.simulate('click'))
 	let currentNum = prop(slider.find('.thing-buffer-center'), 'num')
 	expect(currentNum).toBe(data[0].num)
+})
 
-	prevHalf.simulate('click')
-	currentNum = prop(slider.find('.thing-buffer-center'), 'num')
-	expect(currentNum).toBe(data[data.length - 1].num)
+it('it wraps around when you click prev passed the first image', () => {
+	const slider = shallow(<Slider data={data} thing={FakeThing}/>)
+	const prevHalf = slider.find('.next-half').at(0)
+	
+	data.forEach(() => prevHalf.simulate('click'))
+	let currentNum = prop(slider.find('.thing-buffer-center'), 'num')
+	expect(currentNum).toBe(data[0].num)
 })
 
 

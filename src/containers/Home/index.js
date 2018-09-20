@@ -15,10 +15,15 @@ class Home extends Component {
 	}
 
 	componentDidMount(){
+		// connect to socket io client
 		const socket = socketIOClient(endpoint);
+
+		// update image data on 'UPDATE' message from socketio server
 		socket.on('UPDATE', imageData => {
 			this.setState({imageData})
 		});
+
+		// get image data from the server
 		axios.get(endpoint)
 			.then(({data}) => {
 				this.setState({imageData: data})
