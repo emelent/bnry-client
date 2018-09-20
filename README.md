@@ -35,13 +35,15 @@
 	or an Audio component and slide between Audios, or heck, a Pdf document and slide between documents.
 
 
-### Goal 4
+### Goal 4 (done)
 	Get the component to be responsive, make it appropriate for phones, tablets and desktops.
 
 	i.e. 
 		- Phone, go full nearly fullscreen
 		- Tablet, go full width with height cap
 		- Desktop, capped width, and height
+
+		turns out i could just use the same height cap for all of them
 
 ### Goal 5
 	Setup le Node Server
