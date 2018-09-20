@@ -12,18 +12,25 @@ class Slider extends Component {
 		super(props)
 		this.handleNext = this.handleNext.bind(this)
 		this.handlePrev = this.handlePrev.bind(this)
-		
-		const len = props.data.length
-		const prevIndex = len - 1
-		const currIndex = 0
-		const nextIndex = Math.abs(1 % len)
+
 		this.state = {
 			buffer: [
-				{pos:left, index:prevIndex}, 
-				{pos:center, index:currIndex}, 
-				{pos:right, index:nextIndex}
+				{pos:left, index: 0}, 
+				{pos:center, index:0}, 
+				{pos:right, index: 0}
 			]
 		}
+	}
+
+	componentWillReceiveProps(nextProps){
+		const len = nextProps.data.length
+		const prevIndex = len - 1
+		const nextIndex = Math.abs(1 % len)
+		let buffer = this.state.buffer
+		buffer[0].index = prevIndex
+		buffer[2].index = nextIndex
+
+		this.setState({buffer})
 	}
 
 
