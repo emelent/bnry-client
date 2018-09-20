@@ -109,8 +109,6 @@ class Slider extends Component {
 			data: data[buffer[2].index]
 		}
 		
-		console.log(next)
-		console.log(prev)
 		const NextHint = (next.data)? next.data.description:"Next"
 		const PrevHint = (prev.data)? prev.data.description:"Prev"
 		
