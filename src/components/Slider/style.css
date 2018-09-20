@@ -68,20 +68,22 @@
     border-radius: 4px;
     border: 1px solid #ccc;
 }
+.control-spacer{
+	border:none;
+	cursor: default;
+}
 
 /*tablet*/
 @media (min-width:768px) {
 	.slider{
 		width: 480px;
 	}
+
+	.control-container{
+		/* padding: 0; */
+	}
+	.control{
+		margin: 0;
+	}
 }
 
-/*monitor*/
-@media (min-width:992px) and (max-width:1199px) {
-
-}
-
-/*large monitor*/
-@media (min-width:1200px) {
-
-}

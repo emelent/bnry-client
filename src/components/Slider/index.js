@@ -137,6 +137,7 @@ class Slider extends Component {
 						onClick={this.handlePrev}
 						title={PrevHint}
 					>&lt;</div>
+					<div className="control control-spacer"></div>
 					<div className="control control-next"
 						onClick={this.handleNext}
 						title={NextHint}
