@@ -1,5 +1,21 @@
 # BNRY ReactJS Slider
 
+Feature List
+	- At least 5 images with descriptions, stored on the server, and served using node.(done)
+	- Next and previous buttons with a tooltip message indicating which slide is next (kinda)
+	- A description below the image.(done)
+	- A click event on the 1st half or 2nd half of the image that should serve as ‘next’ and
+		‘previous’ buttons (e.g. Clicking on it will take you to the next or previous slide). (done)
+	- There should be a transition effect when clicking a next/previous slide. The new slide
+		should slide in and the old one slide out simultaneously. (done)
+	- Automated tests should be written to cover functionality that you feel should be covered.(done)
+	- Thought should be given to responsive design.(done)
+	- You will be judged on the cleanliness, maintainability and extensibility of the code.
+
+BONUS:
+	Changes to images or descriptions on the server propagate to the browser without the user needing to refresh the page.
+
+
 ## My thought process during this thing
 
 ### Goal 1 (done)
@@ -58,6 +74,10 @@
 		Set up a websocket on the server so the client gets immediately notified of db changes
 		and reacts accordingly.
 
+
+### Clean up the code
+	Things are probably a mess at this point, time to re-evaluate code decisions and clean up
+	the dirties.
 
 ### Polish the tings
 
