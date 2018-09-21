@@ -38,7 +38,7 @@ class Home extends Component {
 		return (
 			<div className="home-view">
 				<div className="home-title">BNRY ReactJS Slider</div>
-				{ (this.state.error) &&
+				{ error &&
 					<div className="home-warning">Failed to connect to Server... Using dummy daata</div>
 				}
 				<Slider width="480px" data={data} itemType={ImageThing} />

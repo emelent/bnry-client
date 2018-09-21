@@ -115,10 +115,15 @@ class Slider extends Component {
 		}
 
 		// setup hint text
-		const prev = data[buffer.find(b => b.pos === left).index]
-		const next = data[buffer.find(b => b.pos === right).index]
-		const PrevHint = (prev)? prev.description:"Prev"
-		const NextHint = (next)? next.description:"Next"
+		const currIndex = buffer.find(b => b.pos === center).index
+		let prevIndex = currIndex - 1
+		let nextIndex = (currIndex + 1) % data.length
+		if (prevIndex < 0) prevIndex = data.length - 1
+
+
+		const PrevHint = (data.length > 0)? data[prevIndex].description: "Prev"
+		const NextHint = (data.length > 0)? data[nextIndex].description : "Next"
+
 		const style = {
 			width,
 			height,
