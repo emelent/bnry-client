@@ -87,22 +87,30 @@ class Slider extends Component {
 		this.setState({buffer})
 	}
 
+	// return buffer class names
+	getBufferClassNames(pos){
+		let cn = `thing-buffer-${pos}`
+		if(pos === center)
+			cn += ' active'
+		return cn
+	}
+
 	render() {
-		const {data, width, height} = this.props
+		const {data, width, height, transitionDuration} = this.props
 		const Thing = this.props.thing
 		const {buffer} = this.state
 
 		// setup buffer data
 		const b1 = {
-			className : `thing-buffer-${buffer[0].pos}`,
+			className : this.getBufferClassNames(buffer[0].pos),
 			data: data[buffer[0].index]
 		}
 		const b2 = {
-			className : `thing-buffer-${buffer[1].pos}`,
+			className : this.getBufferClassNames(buffer[1].pos),
 			data: data[buffer[1].index]
 		}
 		const b3 = {
-			className : `thing-buffer-${buffer[2].pos}`,
+			className : this.getBufferClassNames(buffer[2].pos),
 			data: data[buffer[2].index]
 		}
 
@@ -111,19 +119,20 @@ class Slider extends Component {
 		const PrevHint = (b1.data)? b1.data.description:"Prev"
 		const style = {
 			width,
-			height
+			height,
+			transitionDuration
 		}
 		return (
 			<div className="slider" style={style} >
 				{/* Buffers */}
 				<div className={'thing-buffer ' + b1.className}>
-					<Thing {...b1.data} />
+					<Thing {...b1.data} transitionDuration={transitionDuration}/>
 				</div>
 				<div className={'thing-buffer ' + b2.className}>
-					<Thing {...b2.data} />
+					<Thing {...b2.data} transitionDuration={transitionDuration} />
 				</div>
 				<div className={'thing-buffer ' + b3.className}>
-					<Thing {...b3.data} />
+					<Thing {...b3.data} transitionDuration={transitionDuration} />
 				</div>
 				
 				{/* Clickable left and right halfs*/}
@@ -139,12 +148,16 @@ class Slider extends Component {
 					<div className="control control-prev"
 						onClick={this.handlePrev}
 						title={PrevHint}
-					>&lt;</div>
+					>
+						<i className="mdi mdi-arrow-left mdi-18px"></i>
+					</div>
 					<div className="control control-spacer"></div>
 					<div className="control control-next"
 						onClick={this.handleNext}
 						title={NextHint}
-					>&gt;</div>
+					>
+						<i className="mdi mdi-arrow-right mdi-18px">
+					</i></div>
 				</div>
 			</div>
 		);
@@ -154,12 +167,14 @@ class Slider extends Component {
 Slider.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.object).isRequired,
 	width: PropTypes.string,
-	height: PropTypes.string
+	height: PropTypes.string,
+	transitionDuration: PropTypes.string,
 };
 
 Slider.defaultProps = {
 	width: '100%',
-	height: '520px'
+	height: '540px',
+	transitionDuration: '0.6s'
 }
 	
 export default Slider;	
