@@ -80,6 +80,6 @@ BONUS:
 	Things are probably a mess at this point, time to re-evaluate code decisions and clean up
 	the dirties.
 
-### Polish the tings
+### Polish the tings (done)
 
 	Make it look super cool... or something
