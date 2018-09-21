@@ -169,7 +169,7 @@ Slider.propTypes = {
 	width: PropTypes.string,
 	height: PropTypes.string,
 	transitionDuration: PropTypes.string,
-	itemType: PropTypes.element.isRequired
+	itemType: PropTypes.func.isRequired
 };
 
 Slider.defaultProps = {
