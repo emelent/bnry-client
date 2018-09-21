@@ -41,7 +41,7 @@ class Home extends Component {
 				{ (this.state.error) &&
 					<div className="home-warning">Failed to connect to Server... Using dummy daata</div>
 				}
-				<Slider width="480px" data={data} thing={ImageThing} />
+				<Slider width="480px" data={data} itemType={ImageThing} />
 				
 			</div>
 		)

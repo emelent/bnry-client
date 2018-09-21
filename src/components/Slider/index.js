@@ -96,8 +96,8 @@ class Slider extends Component {
 	}
 
 	render() {
-		const {data, width, height, transitionDuration} = this.props
-		const Thing = this.props.thing
+		const {data, width, height, transitionDuration, itemType} = this.props
+		const Thing = itemType
 		const {buffer} = this.state
 
 		// setup buffer data
@@ -169,6 +169,7 @@ Slider.propTypes = {
 	width: PropTypes.string,
 	height: PropTypes.string,
 	transitionDuration: PropTypes.string,
+	itemType: PropTypes.element.isRequired
 };
 
 Slider.defaultProps = {
